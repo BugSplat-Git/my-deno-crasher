@@ -1,0 +1,8 @@
+// Allows await in top level function and fixes error using main.ts without an export
+{
+    "compilerOptions": {
+        "module": "ESNext",
+        "target": "ESNext",
+        "isolatedModules": false
+    }
+}
