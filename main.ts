@@ -1,4 +1,4 @@
-import { BugSplat } from "https://deno.land/x/bugsplat@v1.0.0/bugsplat.ts";
+import { BugSplat } from 'https://esm.sh/bugsplat@8.0.1';
 
 const description = "test crash from deno!";
 const key = "en-US";
@@ -14,7 +14,7 @@ bugsplat.setDefaultUser(user);
 try {
   generateExampleStackFrames();
 } catch (error) {
-  await bugsplat.post(error);
+  await bugsplat.post(error, getAdditionalOptionsWithLogFile());
 }
 
 function crash() {
@@ -35,4 +35,15 @@ function sampleStackFrame1() {
 
 function sampleStackFrame2() {
   crash();
+}
+
+function getAdditionalOptionsWithLogFile() {
+  const filename = 'log.txt';
+  return {
+    additionalFormDataParams: [{
+      key: 'file',
+      value: new File([Deno.readFileSync(filename)], filename),
+      filename: filename,
+    }],
+  };
 }
