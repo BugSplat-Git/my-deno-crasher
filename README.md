@@ -89,9 +89,9 @@ deno run --allow-net --allow-read main.ts
 
 After posting an error, navigate to the [Crashes](https://app.bugsplat.com/v2/crashes) page. You should see a new crash report for the application you just configured. Click the link in the ID column to see details about your crash on the [Crashes](https://app.bugsplat.com/v2/crashes) page:
 
-<figure><img src="../../../../.gitbook/assets/image (33).png" alt=""><figcaption><p>Deno Error Reports</p></figcaption></figure>
+![Deno error reports](https://github.com/BugSplat-Git/my-deno-crasher/assets/2646053/a4505b1a-e5b7-45e0-bcea-98aa18cc85bd)
 
-<figure><img src="../../../../.gitbook/assets/image (32).png" alt=""><figcaption><p>Deno Error Report</p></figcaption></figure>
+![Deno error report](https://github.com/BugSplat-Git/my-deno-crasher/assets/2646053/c4c8a574-e05b-4ce1-b5b4-63febce982dc)
 
 That’s it! Your application is now configured to post error reports to BugSplat.
 
