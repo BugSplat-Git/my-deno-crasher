@@ -1,3 +1,5 @@
+> **This sample has moved to [bugsplat-js/examples/my-deno-crasher](https://github.com/BugSplat-Git/bugsplat-js/tree/master/examples/my-deno-crasher).** This repository is archived and kept for history.
+
 [![bugsplat-github-banner-basic-outline](https://user-images.githubusercontent.com/20464226/149019306-3186103c-5315-4dad-a499-4fd1df408475.png)](https://bugsplat.com)
 <br/>
 # <div align="center">BugSplat</div> 
