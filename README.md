@@ -23,7 +23,7 @@ This sample project demonstrates how to use the [bugsplat](https://github.com/Bu
 Add an import from [bugsplat-js](https://github.com/BugSplat-Git/bugsplat-js) via [esm.sh](https://esm.sh/):
 
 ```typescript
-import { BugSplat } from 'https://esm.sh/bugsplat@8.0.1';
+import { BugSplat } from 'https://esm.sh/bugsplat@9.2.0';
 ```
 
 Create a new instance of the `BugSplat` class with the name of your BugSplat database, the name of your application, and the version of your application:
@@ -79,11 +79,19 @@ Set your current directory to `my-deno-crasher`.
 cd my-deno-crasher
 ```
 
-Run the sample with the `--allow-net` and `--allow-read` flags to allow BugSplat to post an error to our backend and read the log file respectively.
+Run the sample with the `--allow-net`, `--allow-read`, and `--allow-env=BUGSPLAT_CRASH_POST_URL` flags so BugSplat can post an error to our backend, read the log file, and check for a crash post URL override.
 
 ```bash
-deno run --allow-net --allow-read main.ts
+deno run --allow-net --allow-read --allow-env=BUGSPLAT_CRASH_POST_URL main.ts
 ```
+
+Pass `--with-cause` to post an error that has a `cause` instead (a `SyntaxError` from `JSON.parse` wrapped in a higher-level error):
+
+```bash
+deno run --allow-net --allow-read --allow-env=BUGSPLAT_CRASH_POST_URL main.ts --with-cause
+```
+
+The error has a `cause`; bugsplat 9.2.0 posts the whole chain and BugSplat shows each linked error as a `Caused by:` row.
 
 ## 📈 Viewing Reports
 

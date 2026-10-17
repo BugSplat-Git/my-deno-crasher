@@ -1,4 +1,4 @@
-import { BugSplat } from 'https://esm.sh/bugsplat@8.0.1';
+import { BugSplat } from 'https://esm.sh/bugsplat@9.2.0';
 
 const description = "test crash from deno!";
 const key = "en-US";
@@ -12,7 +12,11 @@ bugsplat.setDefaultEmail(email);
 bugsplat.setDefaultUser(user);
 
 try {
-  generateExampleStackFrames();
+  if (Deno.args.includes("--with-cause")) {
+    crashWithCause();
+  } else {
+    generateExampleStackFrames();
+  }
 } catch (error) {
   await bugsplat.post(error, getAdditionalOptionsWithLogFile());
 }
@@ -35,6 +39,18 @@ function sampleStackFrame1() {
 
 function sampleStackFrame2() {
   crash();
+}
+
+function crashWithCause() {
+  loadUserSettings();
+}
+
+function loadUserSettings() {
+  try {
+    JSON.parse("{ not valid json");
+  } catch (error) {
+    throw new Error("Failed to load user settings", { cause: error });
+  }
 }
 
 function getAdditionalOptionsWithLogFile() {
